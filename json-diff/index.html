@@ -10,8 +10,10 @@
 
 <body>
     <div id="view">
-            <input type="text" id="text1" class="form-control mid" rows="10"/>
-            <input type="text" id="text2" class="form-control mid" rows="10"/>
+            <span  id="text1" class="form-control mid" rows="10" style="display: false;"></span>
+            <span  id="text2" class="form-control mid" rows="10" style="display: false;"></span>
+            <div id = "textshow1" style="width: 50%;height: auto;float: left;overflow: auto;background-color: red;color: white">1</div>
+            <div id="textshow2" style="width: 50%;height: auto;float: left;overflow: auto;background-color: blue;color: white">2</div>
         <div class="range text-center">
             <button id="compare" class="btn btn-primary" type="button" onclick="handle()">对比</button>
         </div>
@@ -141,11 +143,16 @@
     };
 
     var t1 = document.getElementById("text1");
+    var textshow1 = document.getElementById('textshow1');
     t1.value = JSON.stringify(jt1);
+    textshow1.innerHTML = JSON.stringify(jt1);
+
 
     var t2 = document.getElementById("text2");
+    var textshow2 = document.getElementById('textshow2');
     t2.value = JSON.stringify(jt2);
-
+    textshow2.innerHTML = JSON.stringify(jt2);
+    
     var _diff = new Diff({
         "left": "text1",
         "right": "text2",
