@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>JSON diff</title>
+<!--    <link rel="stylesheet" type="text/css" href="../main.css">-->
+    <link rel="stylesheet" type="text/css" href="diff.css">
+    <script type="text/javascript" src="diff.js"></script>
+</head>
+
+<body>
+    <div id="view">
+            <input type="text" id="text1" class="form-control mid" rows="10"/>
+            <input type="text" id="text2" class="form-control mid" rows="10"/>
+        <div class="range text-center">
+            <button id="compare" class="btn btn-primary" type="button" onclick="handle()">对比</button>
+        </div>
+        <div id="result" style="min-height:300px"></div>
+    </div>
+    <script type="text/javascript">
+    var jt1 = {
+        "format": "example",
+        "content": [{
+            "align": "center",
+            "depth": 0,
+            "list": false,
+            "content": [{
+                "style": {
+                    "underline": 1,
+                    "bold": 2,
+                    "size": 20,
+                    "italic": 2,
+                    "color": "FFFFFF",
+                    "fontFamily": "Arial"
+                },
+                "content": "And please, feel free to send us your feedback and comments to "
+            }, {
+                "style": {
+                    "underline": 1,
+                    "size": 20,
+                    "italic": 2,
+                    "color": "4DC3FF",
+                    "fontFamily": "Arial"
+                },
+                "content": "hello world"
+            }, {
+                "style": {
+                    "underline": 1,
+                    "bold": 2,
+                    "size": 20,
+                    "italic": 2,
+                    "color": "FFFFFF",
+                    "fontFamily": "Arial"
+                },
+                "content": ", or just by clicking on the "
+            }, {
+                "style": {
+                    "underline": 1,
+                    "bold": 2,
+                    "size": 20,
+                    "italic": 2,
+                    "color": "4DC3FF",
+                    "fontFamily": "Arial"
+                },
+                "content": "feedback"
+            }, {
+                "content": " button up above.",
+                "style": {
+                    "size": 20,
+                    "color": "FFFFFF",
+                    "name": "Arial",
+                    "bold": 2,
+                    "italic": 2,
+                    "underline": 2
+                }
+            }],
+            "ordered": false
+        }],
+        "version": 3
+    };
+    var jt2 = {
+        "format": "example",
+        "version": 3.1,
+        "content": [{
+            "list": false,
+            "depth": 0,
+            "ordered": false,
+            "content": [{
+                "content": "And please, feel free to send us your feedbamments to ",
+                "style": {
+                    "size": 20,
+                    "color": "FFFFFF",
+                    "name": "Arial",
+                    "bold": 2,
+                    "italic": 2,
+                    "underline": 2
+                }
+            }, {
+                "content": "foo",
+                "style": {
+                    "size": 20,
+                    "color": "4DC2FF",
+                    "name": "Arial",
+                    "bold": 2,
+                    "italic": 2,
+                    "underline": 2
+                }
+            }, {
+                "content": ", or just by clicking on the ",
+                "style": {
+                    "size": 20,
+                    "color": "FFFFFF",
+                    "name": "Arial",
+                    "bold": 2,
+                    "italic": 2,
+                    "underline": 2
+                }
+            }, {
+                "content": "feedback",
+                "style": {
+                    "size": 20,
+                    "color": "4DC2FF",
+                    "name": "Arial",
+                    "bold": 2,
+                    "italic": 2,
+                    "underline": 2
+                }
+            }, {
+                "content": " button up above.",
+                "style": {
+                    "size": 20,
+                    "color": "FFFFFF",
+                    "name": "Arial",
+                    "bold": 2,
+                    "italic": 2,
+                    "underline": 2
+                }
+            }],
+            "align": "center"
+        }]
+    };
+
+    var t1 = document.getElementById("text1");
+    t1.value = JSON.stringify(jt1);
+
+    var t2 = document.getElementById("text2");
+    t2.value = JSON.stringify(jt2);
+
+    var _diff = new Diff({
+        "left": "text1",
+        "right": "text2",
+        "targetId": "result"
+    });
+
+
+    function handle() {
+        debugger
+        _diff.compare();
+
+    }
+
+    // $("#compare").click(function() {
+    //     _diff.compare();
+    // });
+    // $("#swap").click(function() {
+    //     _diff.swap();
+    // });
+    // $("#clear").click(function() {
+    //     _diff.clear();
+    // });
+    //
+    // $("#expand").click(function() {
+    //     _diff.expandAll();
+    // });
+    //
+    // $("#fade-in").click(function() {
+    //     _diff.fadeIn();
+    // });
+    //
+    // $("#fade-out").click(function() {
+    //     _diff.fadeOut();
+    // });
+    //
+    // $("#collapseAll").click(function() {
+    //     _diff.collapseAll();
+    // });
+    //
+    // $("#collapse").click(function() {
+    //     _diff.collapse(document.getElementById("result"));
+    // });
+    //
+    //
+    //
+    //
+    //
+    //
+    </script>
+</body>
+
+</html>
